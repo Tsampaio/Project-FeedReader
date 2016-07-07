@@ -63,7 +63,8 @@ $(function() {
          * the CSS to determine how we're performing the
          * hiding/showing of the menu element.
          */
-        /* Ensures the menu element is hidden by default. */
+
+        // Ensures the menu element is hidden by default.
         it('is hidden by default', function () {
             expect($('body').hasClass('menu-hidden')).toBeTruthy();
         });
@@ -73,6 +74,9 @@ $(function() {
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
+
+        //check body has and does not have .menu-hidden on
+        //every other click of menu-icon
         it('is visible when clicked', function () {
             var menuIcon = $('.menu-icon-link');
             menuIcon.click();
@@ -93,10 +97,12 @@ $(function() {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
         var id = 0;
+        //beforeEach to wait for async call to finish
         beforeEach(function (done) {
             loadFeed(id, done);
         });
 
+        //checks to see if at least 1 feed entry has been added
         it('there is at least one single element', function (done) {
             expect($('.feed .entry').length).toBeGreaterThan(0);
             done();
@@ -113,6 +119,7 @@ $(function() {
         var $previous;
         var id = 0;
 
+        //beforeEach to wait for async calls to finish
         beforeEach(function (done) {
             loadFeed(id, function () {
                 $previous = $('.feed .entry').html();
@@ -122,13 +129,15 @@ $(function() {
             });
         });
 
+        //afterEach to reload first entry
         afterEach(function (done) {
             loadFeed(id, function () {
                 done();
             })
         })
 
-        it('content changes', function (done) {
+        //Ensuring that the content actually changes
+        it('content of .feed changes on menu click', function (done) {
             expect($('.feed .entry').html()).not.toEqual($previous);
             done();
         });
