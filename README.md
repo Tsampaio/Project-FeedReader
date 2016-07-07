@@ -4,6 +4,9 @@
 This project is an web-based application that reads RSS feeds. 
 I have done a couple of tests using Jasmine, to make sure it runs error free!
 
+### How to Run
+To run this project simply go to my Github repository https://github.com/Tsampaio/Project-FeedReader and download all the files,
+Click on index.html to get started!
 
 ### Tests
 
